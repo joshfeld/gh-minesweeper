@@ -1,7 +1,9 @@
 #!/bin/bash
-# AUTHOR: Abhishek Tamrakar
+# ORIGINAL AUTHOR: Abhishek Tamrakar
 # EMAIL: abhishek.tamrakar08@gmail.com
 # LICENSE: Copyright (C) 2018 Abhishek Tamrakar
+#
+# MODIFICATIONS BY: Josh Feldman, copyright 2022
 #
 #  Licensed under the Apache License, Version 2.0 (the "License");
 #  you may not use this file except in compliance with the License.
@@ -46,12 +48,11 @@ usage()
 {
 cat <<_EOF_
   This game is made for fun, it has simple rules.
-  * Do not cheat.
   * You can re-select an element if only it's -
     empty.
-  * if even, double digits are given, only the
+  * If double digits are given, only the
     first will be considered.
-  * When the game is over, it is over.
+  * If your selection is a mine, it is game over.
   Shown down here is a metrics 10x10 in size and
   to play you have to enter the coordinates.
   NOTE: To choose col- g, row- 5, give input - g5
@@ -166,7 +167,7 @@ get_coordinates()
 trap time_to_quit INT
 printf "\e[2J\e[H"
 usage
-read -p "Type Enter to continue. And good luck!"
+read -p "Type Enter to continue, or Exit to quit"
 plough
 while true; do
   printf "Remember: to choose col- g, row- 5, give input - g5 \n\n"
